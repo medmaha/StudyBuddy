@@ -1,0 +1,43 @@
+<div class="activities__box">
+    <div class="activities__boxHeader roomListRoom__header">
+        <a href="" class="roomListRoom__author">
+            <div class="avatar avatar--small">
+                <img src="{{activity.group.author.avatar.url}}" />
+            </div>
+            <p>
+                <!-- @{{activity.topic.host}} -->
+                <span>{{activity.date_issued|timesince}} ago</span>
+            </p>
+        </a>
+
+        {% if request.user == activity.room.host %}
+        <div class="roomListRoom__actions">
+            <a href="">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                <title>remove</title>
+                <path
+                d="M27.314 6.019l-1.333-1.333-9.98 9.981-9.981-9.981-1.333 1.333 9.981 9.981-9.981 9.98 1.333 1.333 9.981-9.98 9.98 9.98 1.333-1.333-9.98-9.98 9.98-9.981z">
+                </path>
+            </svg>
+            </a>
+        </div>
+        {% endif %}
+
+
+    </div>
+    <div class="activities__boxContent">
+        <p class="mb">{{activity.message}}<a href="#">
+        </a></p>
+        <span id="new-room" class="activities__boxRoomContent mt break-activity" >
+            <a href="{% url 'group-chat' activity.group.id %}">{{activity.group.name}}</a>
+        </span> <span style="margin-left: 1rem;">From</span>
+        
+        <p id="new-room" class="activities__boxRoomContent" style="max-width: 110%; width: fit-content;">
+            <a href="{% url 'room' activity.group.room.id %}" style="width: 100%; text-overflow:ellipsis; white-space:nowrap; overflow:hidden; display: block; align-items: center;">
+                {{activity.group.room.name}} 
+            </a>
+        </p>
+
+    </div>
+
+</div>

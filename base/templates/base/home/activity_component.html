@@ -1,0 +1,26 @@
+<div class="activities">
+    <div class="activities__header">
+            <h2>Recent Activities</h2>
+    </div>
+    {% for activity in activities %}
+        <!-- Recent Messages -->
+        {% if activity.conversations %}
+            {% include 'activity/message_activities.html' %}
+        {% endif %}
+
+        <!-- Recent rooms -->
+        {% if activity.room %}
+            {% include 'activity/room_activities.html' %} 
+        {% endif %}
+
+        <!-- Recent topics -->
+        {% if activity.topic %}
+            {% include 'activity/topic_activities.html' %}
+        {% endif %}
+
+        <!-- Recent topics -->
+        {% if activity.group %}
+            {% include 'activity/group_activities.html' %}
+        {% endif %}
+
+    {% endfor %}

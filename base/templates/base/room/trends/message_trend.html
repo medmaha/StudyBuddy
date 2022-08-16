@@ -1,0 +1,22 @@
+<div class="trend">
+    <div class="author">
+        <img src="{{trend.messages.user.avatar.url}}" alt="">
+    </div>
+    <div class="about">
+        <span>{{trend.activity_message}}</span>
+        <span class="span">
+            {{trend.messages.group}}
+        </span>
+    </div>
+    <div class="comment">
+        <a href="#">{{trend.messages.body}}</a>"
+    </div>
+    <small class="author__username-date__issued">
+        <span class="username">
+            @{{trend.messages.user.username}}
+        </span>
+        <span class="date_issued">
+           {{trend.date_issued|timesince}}
+        </span>
+    </small>
+</div>

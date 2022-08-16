@@ -1,0 +1,140 @@
+.d-flex{
+    display: flex;
+    justify-content: space-between;
+}
+
+.follow-btn {
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+
+    background-color: var(--color-dark-light);
+    border-radius: 3px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+#new-room{
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+#new-room a:hover{
+    text-decoration: none;
+    cursor: pointer;
+    color:  var(--color-dark-light);
+
+}
+
+
+.mt {
+  margin-top: 5px;
+}
+.mb {
+  margin-bottom: 5px;
+}
+
+
+.topics__header {
+  margin-bottom: 2rem;
+}
+
+.room_container{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.room_container_feed{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.contributors{
+    text-align: center;
+    color: red;
+}
+
+.middle-feed{
+    border: 2px solid var(--color-bg);
+    background-color: var(--color-dark-medium);
+}
+
+.text-center{
+    text-align: center;
+}
+
+.new_group_link{
+    text-decoration: underline;
+}
+
+.new_group_link a{
+    color: black;
+    width: fit-content;
+    height: fit-content;
+    background-color: var(--color-dark-light);
+    padding: 3px;
+    font-family:sans-serif;
+    font-weight:lighter;
+    border-radius: 10px;
+
+}
+
+.new_group_link a:hover{
+    text-decoration: none;
+    color: darkgray;
+}
+
+.room_group_list{
+    position: relative;
+}
+
+.room-header{
+    color: white;
+    font-size: 25px;
+}
+
+
+.border-bottom{
+    border-bottom: 1px solid darkgray;
+}
+
+.border-bottom-1{
+    border-bottom: 1px solid var(--color-dark-medium);
+}
+
+
+/* Room Trendings */
+.trends__wrapper{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.trends__wrapper .trend{
+    width: 65%;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+}
+
+.trends__wrapper .trend .author{
+    width: 35px;
+    height: 35px;
+    aspect-ratio: 1.1;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 3px solid var(--color-bg);
+    background: #999;
+}
+
+.trends__wrapper .trend .author img{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}

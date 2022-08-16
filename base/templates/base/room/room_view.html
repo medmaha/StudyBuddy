@@ -1,0 +1,127 @@
+
+ {% extends 'main.html' %}
+
+ {% block content %}
+
+     <div class="room_container">
+         <div>
+             <!-- HEADER -->
+             <div class="container">
+                 <a href="{{request.META.HTTP_REFERER}}">
+                     <title>arrow-left</title>
+                        <p class="back-btn mt"> ↺ back</p>
+                 </a>
+                 <h3 class="room-header text-center active">
+                     {{room}}
+                 </h3>
+                 <div class="border-bottom">
+                     <p>{{room.description}}</p>
+                 </div>
+
+             </div>
+
+             <!-- Group List -->
+             <div class="room_group_list">
+                 <div class="topics-page layout__body">
+                     <ul class="topics__list">
+                       <li class="">
+                         <a style='color:white;' class="text-center">Groups in {{room}} {{groups.count}}</a>
+                       </li>
+                       {% for group in groups %}
+                           <li>
+                             <a href="{% url 'group-chat' group.pk %} ">
+                            {{i}} {{ group.name }}
+                                <span>Users {{group.users.count}}</span>
+                             </a>
+                           </li>
+                       {% endfor %}
+                     </ul>
+                 </div>
+                 <div class="topics-page layout__body text-center new_group_link" style='margin:0; padding:0;'>
+                     <a href="{% url 'group-create' %}?q={{room.name}}" class="active"><span>All Groups</span></a>
+                 </div>
+                 <div class="topics-page layout__body text-center new_group_link mt">
+                     <a href="{% url 'group-create' %}?q={{room.name}}" class="active" style="background: rgb(97, 65, 239); color:#fff; padding:.5rem 1rem;"><span>Create New group</span></a>
+                 </div>
+
+             </div>
+         </div>
+
+        <!-- freestyle -->
+        <div class="activity__feed" >
+
+            <!-- Room activy_feed -->
+            <div class="middle-feed">
+                <h2 class="room__activity__header"> {{room}} Activities </h2>
+                
+                <div class="trends__wrapper">
+                    {% for trend in room_activity %}
+                        {% if trend.messages %}
+                            {% include './trends/message_trend.html'%}
+                        {% endif %}
+                        {% if trend.groups %}
+                            {% include './trends/group_trend.html'%}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Contributors -->
+            <div class="">
+                <div class="topics-page layout__body">
+                    <h1 class="topics-page layout__body text-center">Contributors {{contributors.count}}</h1>
+                    <ul class="topics__list">
+                        <li>
+                        </li>
+                        {% for contributer in contributors %}
+                            <li>
+                                {% for group in groups %}
+                                    {% if group.author == contributer %}
+                                    <div class="borer-bottom-1">
+                                        <div class="roomListRoom__header " >
+                                            <a href="{% url 'user-profile' group.author.id %}" class="roomListRoom__author " style="margin:5px;">
+                                                <div class="avatar avatar--small">
+                                                    <img src="{{group.author.avatar.url}}" />
+                                                </div>
+                                                @{{group.author.username}}
+                                            </a>
+                                        </div>
+                                        <div class="">
+                                            <p>created a group
+                                                <a href="{% url 'group-chat' group.pk %}">
+                                                    <span id="new-room">
+                                                        "{{group}}"
+                                                    </span>
+                                                </a>
+                                             </p>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+ {% endblock content %}
+
+
+ <!-- <div class="room_group_list">
+     <div class="topics-page layout__body text-center new_group_link">
+         <a href="{% url 'group-create' %}?q={{room.name}}"><span>Create New group</span></a>
+     </div>
+     <div class="topics-page layout__body">
+
+         <ul class="topics__list">
+
+           <li>
+             <a href="{% url 'topics' %}" class="active">All Groups in  "{{room}}"<span>{{groups.count}}</span></a>
+           </li>
+
+         </ul>
+     </div>
+ </div> -->
